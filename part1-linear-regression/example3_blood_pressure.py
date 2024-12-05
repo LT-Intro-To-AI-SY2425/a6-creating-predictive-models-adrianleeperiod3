@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
+import math
 import matplotlib.pyplot as plt
-
+from sklearn.linear_model import LinearRegression
 '''
 Run the program and consider the following questions:
 1. Look at the data points on the graph. Do age and blood pressure appear to have a linear relationship?
@@ -9,8 +10,16 @@ Run the program and consider the following questions:
 '''
 
 data = pd.read_csv("part1-linear-regression/blood_pressure_data.csv")
-x = data["Age"]
-y = data["Blood Pressure"]
+x = data["Age"].values
+y = data["Blood Pressure"].values
+
+x = x.reshape(-1, 1)
+
+model = LinearRegression().fit(x,y)
+
+coefficient = float(model.coef_[0])
+y_intercept = float(model.intercept_)
+rsq = model.score(x,y)
 
 #sets the size of the graph
 plt.figure(figsize=(5,4))
@@ -20,7 +29,7 @@ plt.xlabel("Age")
 plt.ylabel("Systolic Blood Pressure")
 plt.title("Systolic Blood Pressure by Age")
 plt.scatter(x, y)
-
-print("Pearson's Correlation: r = :", x.corr(y))
-
+plt.plot(x, coefficient*x + y_intercept, c="r", label="Line of Best Fit")
+print("Pearson's Correlation: r = : ", math.sqrt(rsq))
+plt.legend()
 plt.show()
