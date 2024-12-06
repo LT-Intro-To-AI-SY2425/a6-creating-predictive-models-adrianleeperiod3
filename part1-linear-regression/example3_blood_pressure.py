@@ -21,6 +21,10 @@ coefficient = float(model.coef_[0])
 y_intercept = float(model.intercept_)
 rsq = model.score(x,y)
 
+x_predict = 42
+prediction = model.predict([[x_predict]])
+print(f"Prediction when x is {x_predict}: {prediction}")
+
 #sets the size of the graph
 plt.figure(figsize=(5,4))
 
