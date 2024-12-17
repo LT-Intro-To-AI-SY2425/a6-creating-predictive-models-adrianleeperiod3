@@ -19,7 +19,11 @@ Comment out the StandardScaler and re-run your test. How accurate is the model? 
 
 1. How accurate is the model with the StandardScaler? Is this model accurate enough for the given use case? Explain.
 
+
+
 2. Looking at the predicted and actual results, how did the model do? Was there a pattern to the inputs that the model was incorrect about?
+
+While there does to seem to be better accuracy with standardized data points around zero, a strong correlatio for incorrect predictions doesn't seem to be discernable by simply observing cases. Without plotting these incorrect predictions en masse, it would be hard to draw an empirically backed conclusion.
 
 3. Would a 34 year old Female who makes 56000 a year buy an SUV according to the model? Remember to scale the data before running it through the model.
 
